@@ -62,6 +62,7 @@ module FriendlyId
       
       length_command = "LENGTH"
       length_command = "LEN" if sluggable.connection.adapter_name =~ /sqlserver/i
+      length_command = "CHAR_LENGTH" if sluggable.connection.adapter_name =~ /rubyfb/i
       scope = scope.order("#{length_command}(#{column}) DESC, #{column} DESC")
     end
 
